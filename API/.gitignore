@@ -1,0 +1,5 @@
+.idea
+
+/API/appsettings.json
+/API/appsettings.Development.json
+/API/API.http
