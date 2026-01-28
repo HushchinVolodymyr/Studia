@@ -10,7 +10,12 @@ public class AppDbContext : IdentityDbContext<User>
     {
         base.OnModelCreating(builder);
 
-        // Optional: rename default Identity tables if you want
-        // builder.Entity<ApplicationUser>().ToTable("Users");
+        builder.Entity<User>()
+            .HasMany(u => u.RefreshTokens)
+            .WithOne()
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<User>()
+            .OwnsMany(u => u.RefreshTokens);
     }
 }
